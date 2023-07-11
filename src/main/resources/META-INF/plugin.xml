@@ -1,0 +1,47 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+  <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+  <id>com.gavinhome.flutter.flying-redux-template</id>
+  <!-- Public plugin name should be written in Title Case.
+       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+  <name>Flying-redux-template</name>
+  <version>1.0.0</version>
+
+  <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+  <vendor email="yangxiaoming512@msn.com" url="https://github.com/gavinHome">Hex</vendor>
+
+  <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+       Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+  <description><![CDATA[
+      Template Code Generator for Fish Redux<br>
+      How to use:<br>
+      Select the package folder, right click -> New -> Generate Component Template <br>
+      Select the package folder, right click -> New -> Generate Page Template <br>
+      <em></em>
+  ]]></description>
+
+  <!-- Product and plugin compatibility requirements.
+       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.all</depends>
+
+  <!-- kotlin support -->
+  <depends>org.jetbrains.kotlin</depends>
+
+  <!-- Extension points defined by the plugin.
+       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+  <extensions defaultExtensionNs="com.intellij">
+
+  </extensions>
+  <actions>
+    <action id="FlyingReduxComponenTemplate"
+            class="com.gavinhome.flutter.flyingreduxtemplate.GenerateComponentTemplateAction"
+            text="Generate Component Template"
+            description="a plugin action to generate Flying Redux component template code"
+            keymap="$default">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <keyboard-shortcut first-keystroke="alt G" keymap="$default"/>
+    </action>
+  </actions>
+</idea-plugin>
