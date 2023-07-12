@@ -1,0 +1,56 @@
+{
+  "templates": [
+    {
+      "component": [
+        "action.dart",
+        "component.dart",
+        "effect.dart",
+        "reducer.dart",
+        "state.dart"
+      ]
+    },
+    {
+      "page": [
+        "action.dart",
+        "effect.dart",
+        "page.dart",
+        "reducer.dart",
+        "state.dart"
+      ]
+    },
+    {
+      "todos": [
+        {
+          "edit": [
+            "action.dart",
+            "effect.dart",
+            "page.dart",
+            "state.dart"
+          ]
+        },
+        {
+          "page": [
+            "adapter.dart",
+            "page.dart",
+            "state.dart"
+          ]
+        },
+        {
+          "report": [
+            "component.dart",
+            "state.dart"
+          ]
+        },
+        {
+          "todo": [
+            "action.dart",
+            "component.dart",
+            "effect.dart",
+            "reducer.dart",
+            "state.dart"
+          ]
+        }
+      ]
+    }
+  ]
+}
