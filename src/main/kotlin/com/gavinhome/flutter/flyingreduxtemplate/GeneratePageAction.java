@@ -7,24 +7,26 @@ import com.intellij.openapi.ui.InputValidator;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.NlsSafe;
 
+import java.util.Objects;
+
 public class GeneratePageAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
         var project = e.getData(PlatformDataKeys.PROJECT);
-        var psiPath = e.getData(PlatformDataKeys.PSI_ELEMENT).toString();
+        var psiPath = Objects.requireNonNull(e.getData(PlatformDataKeys.PSI_ELEMENT)).toString();
         var destPath = psiPath.substring(psiPath.indexOf(":") + 1);
         // show an input dialog for user
         var input = Messages.showInputDialog(project, "Please input page name", "Page",
                 null, null,
                 new InputValidator() {
                     @Override
-                    public boolean checkInput(@NlsSafe String inputString) {
+                    public boolean checkInput(@SuppressWarnings("UnstableApiUsage") @NlsSafe String inputString) {
                         return !Utils.IfExists(inputString, destPath);
                     }
 
                     @Override
-                    public boolean canClose(@NlsSafe String inputString) {
+                    public boolean canClose(@SuppressWarnings("UnstableApiUsage") @NlsSafe String inputString) {
                         return true;
                     }
                 });
@@ -32,7 +34,7 @@ public class GeneratePageAction extends AnAction {
         if (input != null && !input.isEmpty()) {
             Utils.GeneratePage(getClass().getClassLoader(), destPath, "%s".formatted(input));
             Messages.showInfoMessage(project, "Enjoy yourself", "Info");
-            project.getProjectFile().refresh(false, true);
+//            project.getProjectFile().refresh(false, true);
         }
     }
 }
