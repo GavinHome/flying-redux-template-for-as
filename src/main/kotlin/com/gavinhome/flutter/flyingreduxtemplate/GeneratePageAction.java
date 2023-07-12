@@ -22,7 +22,7 @@ public class GeneratePageAction extends AnAction {
                 new InputValidator() {
                     @Override
                     public boolean checkInput(@SuppressWarnings("UnstableApiUsage") @NlsSafe String inputString) {
-                        return !Utils.IfExists(inputString, destPath);
+                        return Utils.IfNotExists(inputString, destPath);
                     }
 
                     @Override
