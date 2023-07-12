@@ -9,6 +9,7 @@ import com.intellij.openapi.util.NlsSafe;
 
 import java.util.Objects;
 
+@SuppressWarnings("UnstableApiUsage")
 public class GenerateComponentAction extends AnAction {
 
     @Override
@@ -21,12 +22,12 @@ public class GenerateComponentAction extends AnAction {
                 null, null,
                 new InputValidator() {
                     @Override
-                    public boolean checkInput(@SuppressWarnings("UnstableApiUsage") @NlsSafe String inputString) {
+                    public boolean checkInput(@NlsSafe String inputString) {
                         return Utils.IfNotExists(inputString, destPath);
                     }
 
                     @Override
-                    public boolean canClose(@SuppressWarnings("UnstableApiUsage") @NlsSafe String inputString) {
+                    public boolean canClose(@NlsSafe String inputString) {
                         return true;
                     }
                 });
