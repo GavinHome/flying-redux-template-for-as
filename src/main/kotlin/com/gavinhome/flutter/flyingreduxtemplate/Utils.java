@@ -10,17 +10,27 @@ import java.io.*;
 public class Utils {
     private static String SOURCE_SEPARATOR = "/";
     public static void GenerateComponent(ClassLoader classLoader, @NotNull String dest, @NotNull String name) {
+        var key = "component";
         var config = Utils.getJSONArray(getConfigJson(classLoader).getAsString("templates"));
-        var srcPath = "%s%s%s".formatted("templates", SOURCE_SEPARATOR, "component");
+        var srcPath = "%s%s%s".formatted("templates", SOURCE_SEPARATOR, key);
         var destPath = "%s%s%s".formatted(dest, File.separator, name + "_component");
-        CopyFolder(classLoader, srcPath, destPath, name, getValueKey(config, "component"));
+        CopyFolder(classLoader, srcPath, destPath, name, getValueKey(config, key));
     }
 
     public static void GeneratePage(ClassLoader classLoader, @NotNull String dest, @NotNull String name) {
+        var key = "page";
         var config = Utils.getJSONArray(getConfigJson(classLoader).getAsString("templates"));
-        var srcPath = "%s%s%s".formatted("templates", SOURCE_SEPARATOR, "page");
+        var srcPath = "%s%s%s".formatted("templates", SOURCE_SEPARATOR, key);
         var destPath = "%s%s%s".formatted(dest, File.separator, name+ "_page");
-        CopyFolder(classLoader, srcPath, destPath, name, getValueKey(config, "page"));
+        CopyFolder(classLoader, srcPath, destPath, name, getValueKey(config, key));
+    }
+
+    public static void GenerateTodos(ClassLoader classLoader, String dest, String name) {
+        var key = "todos";
+        var config = Utils.getJSONArray(getConfigJson(classLoader).getAsString("templates"));
+        var srcPath = "%s%s%s".formatted("templates", SOURCE_SEPARATOR, key);
+        var destPath = "%s%s%s".formatted(dest, File.separator, name);
+        CopyFolder(classLoader, srcPath, destPath, name, getValueKey(config, key));
     }
 
     public static boolean IfExists(@NotNull String name, @NotNull String path) {
@@ -77,9 +87,11 @@ public class Utils {
                 CopyFile(classLoader, source, target, name);
             } else if(config.get(i) instanceof JSONObject) {
                 JSONObject item = (JSONObject) config.get(i);
-                var source = "%s%s%s".formatted(src, SOURCE_SEPARATOR, item.keySet().toString());
-                var target = "%s%s%s".formatted(dest, File.separator, item.keySet().toString());
-                CopyFolder(classLoader, source, target, name, getJSONArray(((JSONObject) config.get(i)).toJSONString()));
+                var key = item.keySet().stream().findFirst().get().toString();
+                var source = "%s%s%s".formatted(src, SOURCE_SEPARATOR, key);
+                var target = "%s%s%s".formatted(dest, File.separator, key);
+                var jsonArray = (JSONArray)item.get(key);
+                CopyFolder(classLoader, source, target, name, jsonArray);
             }
         }
     }

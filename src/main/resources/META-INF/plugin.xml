@@ -43,5 +43,9 @@
             text="Generate Page Template" description="A plugin action to generate Flying Redux page template code">
       <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewDir"/>
     </action>
+    <action id="FlyingReduxTodosTemplate" class="com.gavinhome.flutter.flyingreduxtemplate.GenerateTodosAction"
+            text="Generate Todos Template" description="A plugin action to generate Flying Redux Example Todos code">
+      <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewDir"/>
+    </action>
   </actions>
 </idea-plugin>
