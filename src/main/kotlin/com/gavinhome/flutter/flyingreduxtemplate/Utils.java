@@ -1,5 +1,6 @@
 package com.gavinhome.flutter.flyingreduxtemplate;
 
+import com.google.common.base.CaseFormat;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
@@ -16,7 +17,7 @@ public class Utils {
         var key = "component";
         var config = Utils.getJSONArray(getConfigJson(classLoader).getAsString("templates"));
         var srcPath = "%s%s%s".formatted("templates", SOURCE_SEPARATOR, key);
-        var destPath = "%s%s%s".formatted(dest, File.separator, name + "_component");
+        var destPath = "%s%s%s".formatted(dest, File.separator, name); // name + "_component"
         CopyFolder(classLoader, srcPath, destPath, name, getValueKey(config, key));
     }
 
@@ -24,7 +25,7 @@ public class Utils {
         var key = "page";
         var config = Utils.getJSONArray(getConfigJson(classLoader).getAsString("templates"));
         var srcPath = "%s%s%s".formatted("templates", SOURCE_SEPARATOR, key);
-        var destPath = "%s%s%s".formatted(dest, File.separator, name + "_page");
+        var destPath = "%s%s%s".formatted(dest, File.separator, name); //name + "_page"
         CopyFolder(classLoader, srcPath, destPath, name, getValueKey(config, key));
     }
 
@@ -104,7 +105,8 @@ public class Utils {
     private static void CopyFile(ClassLoader classLoader, @NotNull String src, @NotNull String dest, @NotNull String name) {
         String content = readFile(classLoader, src);
         if (name.length() > 0) {
-            content = replace(content, name);
+            String nameFormatted = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_UNDERSCORE, name));
+            content = replace(content, nameFormatted);
         }
         writeFile(content, dest);
     }
