@@ -24,10 +24,7 @@
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.modules.all</depends>
-
-    <!-- kotlin support -->
-    <depends>org.jetbrains.kotlin</depends>
+<!--    <depends>com.intellij.modules.androidstudio</depends>-->
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->

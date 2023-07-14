@@ -34,8 +34,8 @@ public class GenerateComponentAction extends AnAction {
 
         if (input != null && !input.isEmpty()) {
             Utils.GenerateComponent(getClass().getClassLoader(), destPath, "%s".formatted(input));
+            e.getData(PlatformDataKeys.VIRTUAL_FILE).refresh(false, true);
             Messages.showInfoMessage(project, "Enjoy yourself", "Info");
-//            project.getProjectFile().refresh(false, true);
         }
     }
 }
