@@ -18,9 +18,11 @@ intellij {
 //    type.set("IC") // Target IDE Platform
 //    plugins.set(listOf(/* Plugin Dependencies */))
 
-    version.set("231.9161.38") //    localPath.set("D:\\Program Files\\AndroidStudio");
-    type.set("IC") // Target AndroidStudio
-    plugins.set(listOf("android"))
+//    version.set("231.9161.38")
+//    type.set("IC") // Target IDE Platform
+
+    version.set("2023.1.3")
+    type.set("IC") // Target IDE Platform
 }
 
 tasks {
@@ -48,6 +50,7 @@ tasks {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
 
+    // For Android Studio Test, You can use self IDE and replace the startup path of IDE instance.
     runIde {
         ideDir.set(file("D:\\Program Files\\AndroidStudio"))
     }
