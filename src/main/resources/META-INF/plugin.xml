@@ -5,7 +5,7 @@
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>Flying-Redux-Template</name>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="yangxiaoming512@msn.com" url="https://github.com/gavinHome">GavinHome</vendor>
@@ -21,15 +21,25 @@
       <em></em>
   ]]></description>
 
+    <change-notes><![CDATA[
+      Changes: <br>
+      1. Support flying-redux 0.1.0 <br>
+      <em></em>
+    ]]></change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0" />
+
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
-    <depends>com.intellij.modules.platform</depends>
+    <!-- <depends>com.intellij.modules.platform</depends>-->
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
 
     </extensions>
+    <depends>com.intellij.modules.all</depends>
     <actions>
         <action id="FlyingReduxComponentTemplate"
                 class="com.gavinhome.flutter.flyingreduxtemplate.GenerateComponentAction"
