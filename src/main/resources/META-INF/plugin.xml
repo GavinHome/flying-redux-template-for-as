@@ -5,7 +5,7 @@
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>Flying-Redux-Template</name>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="yangxiaoming512@msn.com" url="https://github.com/gavinHome">GavinHome</vendor>
@@ -37,23 +37,28 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-
     </extensions>
     <depends>com.intellij.modules.all</depends>
     <actions>
         <action id="FlyingReduxComponentTemplate"
                 class="com.gavinhome.flutter.flyingreduxtemplate.GenerateComponentAction"
                 text="Generate Component Template"
-                description="A plugin action to generate Flying Redux component template code">
+                description="A plugin action to generate Flying Redux component template code"
+                icon="/icons/icon.svg">
             <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewDir"/>
         </action>
-        <action id="FlyingReduxPageTemplate" class="com.gavinhome.flutter.flyingreduxtemplate.GeneratePageAction"
-                text="Generate Page Template" description="A plugin action to generate Flying Redux page template code">
+        <action id="FlyingReduxPageTemplate"
+                class="com.gavinhome.flutter.flyingreduxtemplate.GeneratePageAction"
+                text="Generate Page Template"
+                description="A plugin action to generate Flying Redux page template code"
+                icon="/icons/icon.svg">
             <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewDir"/>
         </action>
-        <action id="FlyingReduxTodosTemplate" class="com.gavinhome.flutter.flyingreduxtemplate.GenerateTodosAction"
+        <action id="FlyingReduxTodosTemplate"
+                class="com.gavinhome.flutter.flyingreduxtemplate.GenerateTodosAction"
                 text="Generate Todos Template"
-                description="A plugin action to generate Flying Redux Example Todos code">
+                description="A plugin action to generate Flying Redux Example Todos code"
+                icon="/icons/icon.svg">
             <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewDir"/>
         </action>
     </actions>
